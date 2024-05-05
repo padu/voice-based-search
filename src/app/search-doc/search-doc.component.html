@@ -1,0 +1,16 @@
+<section>
+  <mat-form-field>
+    <mat-label>Search Document</mat-label>
+    <input matInput [(ngModel)]="searchText" (input)="onInputChange()" placeholder="Enter document name" />
+  </mat-form-field>
+  <mat-card *ngFor="let item of searchedItems">
+    <mat-card-title>{{ item.title }}</mat-card-title>
+    <mat-card-subtitle>{{ item.subtitle }}</mat-card-subtitle>
+    <mat-card-content>
+      <p>{{ item.description }}</p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button>Show More</button>
+    </mat-card-actions>
+  </mat-card>
+</section>

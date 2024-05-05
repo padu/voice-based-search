@@ -1,0 +1,15 @@
+<section>
+  <mat-form-field>
+    <mat-label>Upload Document Type</mat-label>
+    <mat-select [(value)]="currentDocument">
+      <mat-option
+        *ngFor="let document of documentTypes"
+        [value]="document"
+        (click)="selectDocument(document)">
+        {{document}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <input class="ng-hide" id="input-file-id" multiple type="file" />
+  <label for="input-file-id" class="md-button md-raised md-primary">Choose Files</label>
+</section>
