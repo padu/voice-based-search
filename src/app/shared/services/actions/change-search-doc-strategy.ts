@@ -1,6 +1,5 @@
 import { ActionStrategy } from './action-strategy';
 import { Theme } from '../../model/theme';
-import { StyleManager } from '../../style-manager/style-manager';
 import { Injectable } from '@angular/core';
 import { SpeechSynthesizerService } from '../web-apis/speech-synthesizer.service';
 import { Router } from '@angular/router';
