@@ -13,3 +13,15 @@ mat-card {
   .example-full-width {
     width: 100%;
   }
+
+  .serach-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+
+    mat-form-field {
+      flex: 1;
+      padding-right: 1rem;
+    }
+  }

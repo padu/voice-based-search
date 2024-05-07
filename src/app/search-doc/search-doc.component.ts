@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { SearchItem, SearchService } from './services/search.service';
 
 @Component({
   selector: 'search-doc',
@@ -27,21 +28,32 @@ export class SearchDocComponent implements OnInit {
     }
   ];
 
-  constructor(private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute, private searchService: SearchService) { }
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
       this.searchText = params.get('input') ?? '' ;
-      this.onInputChange();
+      this.onSearch();
     });
   }
 
-  onInputChange() {
-    //this.searchedItems = this.getItems(this.searchText);
+  onSearch() {
+    this.searchItemsBasedOnPrompt(this.searchText)
+      .subscribe((data: any) => {
+        const output = (Object
+        .values(data) as Array<SearchItem[]>)
+        .flat()
+        .map((item: SearchItem) => ({
+          title: item.fileName,
+          subtitle: `Page: ${item.metadata.page}`,
+          description: item.data
+        }));
+        this.searchedItems = output;
+        console.log(this.searchedItems);
+      });
   }
 
-  getItems(searchText: string) {
-    return this.searchedItems.filter(item => item.includes(searchText));
+  searchItemsBasedOnPrompt(prompt: string) {
+    return this.searchService.search(prompt);
   }
-
 }
