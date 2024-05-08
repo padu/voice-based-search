@@ -6,7 +6,7 @@
     </mat-form-field>
     <button mat-raised-button color="primary" (click)="onSearch()">Search</button>
   </div>
-  <mat-card *ngFor="let item of searchedItems">
+  <mat-card *ngFor="let item of (searchedItems | async)">
     <mat-card-title>{{ item.title }}</mat-card-title>
     <mat-card-subtitle>{{ item.subtitle }}</mat-card-subtitle>
     <mat-card-content>
