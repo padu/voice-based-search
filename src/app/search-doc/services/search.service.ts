@@ -19,6 +19,6 @@ export class SearchService {
   constructor(private http: HttpClient) { }
 
   search(prompt: string) {
-    return this.http.post(this.apiUrl + prompt, {});
+    return this.http.get(this.apiUrl + prompt, {});
   }
 }
