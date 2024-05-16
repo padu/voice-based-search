@@ -34,17 +34,29 @@ export class UploadDocComponent implements OnInit {
 
     this.uploadService.uploadFile(file)
       .subscribe(response => {
+        this.handleFileUploadSuccess(file.name);
         console.log(response);
       }, error => {
-        console.error(error);
+        this.handleFileUploadError("Error in file upload");
       });
   }
 
   
-  handleFileUploadError() {
+  handleFileUploadError(error: string = '') {
     this.snackBar
     .open(
-      'Invalid file type. Only PDF files are allowed.',
+      !!error ? error : 'Invalid file type. Only PDF files are allowed.',
+      'Close', {
+        horizontalPosition: this.horizontalPosition,
+        verticalPosition : this.verticalPosition,
+        duration: 3000
+      });
+  }
+
+  handleFileUploadSuccess(fileName: string) {
+    this.snackBar
+    .open(
+      `File ${fileName} Uploaded Successfully`,
       'Close', {
         horizontalPosition: this.horizontalPosition,
         verticalPosition : this.verticalPosition,
