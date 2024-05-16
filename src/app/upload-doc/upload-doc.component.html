@@ -10,5 +10,5 @@
       </mat-option>
     </mat-select>
   </mat-form-field>
-  <input multiple type="file" />
+  <input #fileUpload type="file" (change)="uploadFile($event)">
 </section>
