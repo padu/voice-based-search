@@ -8,6 +8,9 @@ import { SharedModule } from './shared/shared.module';
 import { WebSpeechModule } from './web-speech/web-speech.module';
 import { UploadDocModule } from './upload-doc/upload-doc.module';
 import { SearchDocModule } from './search-doc/search-doc.module';
+import { VideoPlayerModule } from './video-player/video-player.module';
+
+
 
 @NgModule({
   declarations: [
@@ -20,7 +23,8 @@ import { SearchDocModule } from './search-doc/search-doc.module';
     SharedModule,
     WebSpeechModule,
     UploadDocModule,
-    SearchDocModule
+    SearchDocModule,
+    VideoPlayerModule
   ],
   providers: [],
   bootstrap: [AppComponent]
